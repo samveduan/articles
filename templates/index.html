@@ -180,11 +180,10 @@ var $articlesTable = $('#articles-table').bootstrapTable('destroy').bootstrapTab
 		},{
 			field: 'title',
 			title:'标题',
-			width: '20%'
-		},{
-			field: 'content',
-			title:'内容',
-			width: '62%'
+			width: '80%',
+			formatter: function(value, row, index){
+				return '<a target="_blank" href="/article/article/' + row.id + '">' + value + '</a>';
+			}
 		},{
 			field: 'create_time',
 			title:'创建时间',

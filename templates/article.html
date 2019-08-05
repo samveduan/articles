@@ -1,12 +1,76 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+{% load staticfiles %}
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="{% static 'libs/bootstrap/css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'libs/toastr/css/toastr.css' %}">
+<link rel="stylesheet" href="{% static 'libs/bootstrap-table-master/bootstrap-table.css' %}">
+<link rel="stylesheet" href="{% static 'libs/bootstrap-validator/css/bootstrapValidator.css' %}">
+<script src="{% static 'libs/jquery/jquery-1.11.2.min.js' %}"></script>
+<script src="{% static 'libs/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'libs/toastr/js/toastr.min.js' %}"></script>
+<script src="{% static 'libs/bootstrap-table-master/bootstrap-table.js' %}"></script>
+<script src="{% static 'libs/bootstrap-table-master/locale/bootstrap-table-zh-CN.js' %}"></script>
+<script src="{% static 'libs/bootstrap-validator/js/bootstrapValidator.js' %}"></script>
 <title></title>
+<style>
+#header {
+    width: auto;
+    height: 60px;
+    line-height: 60px;
+    padding: 10px 40px;
+    background: #417690;
+    line-height: 40px;
+    color: #ffc;
+    overflow: hidden;
+}
+#site-name{
+	color: #f5dd5d;
+	font-size: 20px;
+}
+div.breadcrumbs {
+    background: #79aec8;
+    padding: 10px 40px;
+    border: none;
+    font-size: 14px;
+    color: #c4dce8;
+    text-align: left;
+}
+div.breadcrumbs a{
+	color: #ffffff;
+	text-decoration: none;
+}
+#main{
+	padding: 20px;
+}
+#main h3{
+	font-size: 24px;
+	font-weight: bold;
+	text-align: center;
+	line-height: 36px;
+}
+#main p{
+	line-height: 22px;
+	text-indent: 2em;
+	font-size: 16px;
+}
+</style>
 </head>
 
 <body>
-<h3>{{article.title}}</h3>
-<p>{{article.content}}</p>
+<div id="header">
+	<div id="site-name">Django 管理</div>
+</div>
+
+<div class="breadcrumbs">
+<a href="/admin/">首页</a>
+› <a href="/admin/article/">Article</a>
+</div>
+
+<div id="main">
+	<h3 id="title">{{article.title}}</h3>
+	<p>{{article.content}}</p>
+</div>
 </body>
 </html>

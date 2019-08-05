@@ -21,8 +21,11 @@ urlpatterns = [
     path('index/', views.index),
     path('all/', views.all),
     path('add/', views.add),
-    re_path('^article/(?P<article_id>[0-9]+)/$', views.article, name='article_page'),
+    re_path('^article/(?P<article_id>[0-9]+)/$', views.open_a_article, name='article_page'),
     path('get_a_article/', views.get_a_article),
     path('edit/', views.edit),
-    path('delete/', views.delete)
+    path('delete/', views.delete),
+    path('orm/', views.orm),
+    path('foreign/', views.foreign),
+    path('one_to_many/', views.one_to_many)
 ]
