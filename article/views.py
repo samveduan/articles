@@ -155,4 +155,32 @@ def one_to_many(request):
     category.articles.add(article, bulk=False)
     return HttpResponse('success')
     
-    
+def query(request):
+     # 在windows操作系统上，MySql排序规则(Collation)无论是什么大小写都不敏感
+     # 在Linux操作系统上，MySql排序规则(Collation)是utf8_bin，name大小写敏感
+     # article = Article.objects.filter(id__exact=4)
+     
+     # Like和=，大多数情况下是等价的，只有少数情况下是不等价的，'like %搜索词%'就是模糊匹配,'like 搜索词' <=>'= 搜索词'
+     # exact和iexact的区别就是'LIKE'和'='的区别，因为exact在底层会翻译成'='，iexact会翻译成'LIKE'
+     # filter返回的是一个QuerySet
+     # article = Article.objects.filter(id__iexact=4)
+     
+     # get返回的是一个ORM模型
+     # article = Article.objects.get(id__iexact=4)
+     
+     
+     # contains：使用大小写敏感的判断，某个字符串是否在指定的字段中，在使用的时候会被翻译成'like binary'
+     # icontains:使用大小写不敏感的判断，某个字符串是否在指定的字段中，在使用的时候会被翻译成'like'，而'like'在MySQL中是不区分大小写的
+     # contains、icontains和iexact的区别：
+     # contains、icontains在被翻译成SQL的时候使用的是'%value%'，就是整个字符串中只要出现了'value'都能够被找到；而'iexact'没有百分号，那么意味着只有完全相等的时候才会被匹配
+     result = Article.objects.filter(title__contains='钢铁')
+     
+     print(type(result))
+     # QuerySet.query将ORM查询语句转换为sql语句,但query只能在QuerySet上使用，不能在ORM模型上使用
+     print(result.query)
+     return HttpResponse('success')
+ 
+def test(request):
+     result = Article.objects.filter(pk=6)
+     print(type(result))
+     return HttpResponse('success')

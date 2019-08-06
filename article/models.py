@@ -30,7 +30,7 @@ class Article(models.Model):
     author = models.ForeignKey('frontuser.User', on_delete=models.CASCADE, null=True)
     tags = models.ManyToManyField(Tags, blank=True)
     # 设置可为空的BooleanField为NullBooleanField
-    #removed = models.NullBooleanField()
+    # removed = models.NullBooleanField()
     # EmailField在数据库层面并不会限制字符串一定要满足邮箱格式，只是以后使用ModalForm等表单相关操作的时候会起作用
     
     class Meta:

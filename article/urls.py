@@ -27,5 +27,7 @@ urlpatterns = [
     path('delete/', views.delete),
     path('orm/', views.orm),
     path('foreign/', views.foreign),
-    path('one_to_many/', views.one_to_many)
+    path('one_to_many/', views.one_to_many),
+    path('query/', views.query),
+    path('test/', views.test)
 ]
